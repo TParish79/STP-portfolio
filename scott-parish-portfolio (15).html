@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scott Parish - Supply Chain Executive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-blue: #60a5fa;
+            --dark-gray: #1f2937;
+            --medium-gray: #4b5563;
+            --light-gray: #f8fafc;
+            --white: #ffffff;
+            --gold-accent: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(59, 130, 246, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            animation: float 20s infinite linear;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 30m-2 0a2 2 0 1 1 4 0a2 2 0 1 1 -4 0M15 15m-1 0a1 1 0 1 1 2 0a1 1 0 1 1 -2 0M45 45m-1 0a1 1 0 1 1 2 0a1 1 0 1 1 -2 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 25s infinite linear reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0px) translateY(0px); }
+            100% { transform: translateX(-60px) translateY(-60px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.2);
+            object-fit: cover;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .header-text h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #ffffff 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite, fadeInScale 1s ease-out;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .header-text h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-accent), #fbbf24, var(--gold-accent));
+            animation: expandLine 1.5s ease-out 0.5s forwards;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes expandLine {
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .header-text .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+            animation: slideInLeft 1s ease-out 0.3s both;
+            position: relative;
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            100% {
+                opacity: 0.9;
+                transform: translateX(0);
+            }
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.9);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInContact 0.5s ease-out forwards;
+        }
+
+        .contact-item:nth-child(1) { animation-delay: 0.8s; }
+        .contact-item:nth-child(2) { animation-delay: 1.0s; }
+        .contact-item:nth-child(3) { animation-delay: 1.2s; }
+        .contact-item:nth-child(4) { animation-delay: 1.4s; }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            color: var(--white);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .contact-item span:first-child {
+            transition: transform 0.3s ease;
+            font-weight: bold;
+            color: var(--gold-accent);
+            text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+        }
+
+        .contact-item:hover span:first-child {
+            transform: scale(1.3);
+            color: #fbbf24;
+        }
+
+        @keyframes fadeInContact {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--medium-gray);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+            background: rgba(30, 64, 175, 0.05);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        /* Summary Section Background */
+        #summary {
+            background: 
+                linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        #summary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e40af' fill-opacity='0.02'%3E%3Cpath d='M50 50m-20 0a20 20 0 1 1 40 0a20 20 0 1 1 -40 0M20 20m-10 0a10 10 0 1 1 20 0a10 10 0 1 1 -20 0M80 80m-10 0a10 10 0 1 1 20 0a10 10 0 1 1 -20 0'/%3E%3C/g%3E%3C/svg%3E");
+            animation: float 30s infinite linear;
+            z-index: 1;
+        }
+
+        #summary .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Experience Section Background */
+        #experience {
+            background: 
+                linear-gradient(135deg, rgba(30, 64, 175, 0.02) 0%, rgba(59, 130, 246, 0.02) 100%),
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&h=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        #experience::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 40%, rgba(30, 64, 175, 0.03) 50%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, rgba(59, 130, 246, 0.02) 50%, transparent 60%);
+            z-index: 1;
+        }
+
+        #experience .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Skills Section Background */
+        #skills {
+            position: relative;
+        }
+
+        #skills::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(30, 64, 175, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.02) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e40af' fill-opacity='0.02'%3E%3Cpath d='M40 40m-10 0a10 10 0 1 1 20 0a10 10 0 1 1 -20 0M10 10m-5 0a5 5 0 1 1 10 0a5 5 0 1 1 -10 0M70 70m-5 0a5 5 0 1 1 10 0a5 5 0 1 1 -10 0M10 70m-3 0a3 3 0 1 1 6 0a3 3 0 1 1 -6 0M70 10m-3 0a3 3 0 1 1 6 0a3 3 0 1 1 -6 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 35s infinite linear reverse;
+            z-index: 1;
+        }
+
+        #skills .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--primary-blue) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            animation: sectionShimmer 4s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .section h2:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 4px 8px rgba(30, 64, 175, 0.2));
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-accent), #fbbf24, var(--gold-accent));
+            border-radius: 2px;
+            animation: sectionLineGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes sectionLineGlow {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes sectionShimmer {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes sectionLineGlow {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Summary Section */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.95) 0%, rgba(17, 24, 39, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 
+                0 4px 20px rgba(0,0,0,0.3),
+                0 1px 3px rgba(0,0,0,0.2);
+            border-left: 4px solid var(--primary-blue);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 12px 40px rgba(0,0,0,0.4),
+                0 4px 12px rgba(30, 64, 175, 0.3);
+            border-left-color: var(--gold-accent);
+        }
+
+        .summary-card:hover::before {
+            left: 100%;
+        }
+
+        .summary-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .summary-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .summary-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold-accent);
+            font-weight: bold;
+        }
+
+        .summary-card ul {
+            list-style: none;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.95) 0%, rgba(17, 24, 39, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 
+                0 4px 20px rgba(0,0,0,0.3),
+                0 1px 3px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 8px 30px rgba(0,0,0,0.4),
+                0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .skill-category:hover::before {
+            left: 100%;
+        }
+
+        .skill-category h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--secondary-blue), var(--accent-blue));
+            color: var(--white);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 
+                0 4px 15px rgba(59, 130, 246, 0.4),
+                0 0 20px rgba(59, 130, 246, 0.2);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+        }
+
+        .skill-tag:hover::before {
+            left: 100%;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--secondary-blue);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: calc(50% - 2rem);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: calc(50% + 2rem);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-blue);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 0 4px var(--secondary-blue),
+                0 0 20px rgba(30, 64, 175, 0.3);
+            top: 2rem;
+            animation: timelinePulse 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            background: var(--gold-accent);
+            box-shadow: 
+                0 0 0 4px var(--secondary-blue),
+                0 0 25px rgba(245, 158, 11, 0.4),
+                0 0 40px rgba(245, 158, 11, 0.2);
+            transform: scale(1.2);
+        }
+
+        @keyframes timelinePulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 0 4px var(--secondary-blue),
+                    0 0 20px rgba(30, 64, 175, 0.3);
+            }
+            50% {
+                box-shadow: 
+                    0 0 0 8px rgba(59, 130, 246, 0.4),
+                    0 0 30px rgba(30, 64, 175, 0.4);
+            }
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -3rem;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -3rem;
+        }
+
+        .experience-card {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.98) 0%, rgba(17, 24, 39, 0.98) 100%);
+            backdrop-filter: blur(15px);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 
+                0 4px 20px rgba(0,0,0,0.3),
+                0 1px 3px rgba(0,0,0,0.2);
+            border-top: 4px solid var(--primary-blue);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.08), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 12px 40px rgba(0,0,0,0.4),
+                0 4px 12px rgba(30, 64, 175, 0.3);
+            border-top-color: var(--gold-accent);
+        }
+
+        .experience-card:hover::before {
+            left: 100%;
+        }
+
+        .experience-card h3 {
+            color: var(--accent-blue);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .company-name {
+            color: var(--gold-accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .date-range {
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .company-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--accent-blue);
+            padding-left: 1rem;
+        }
+
+        .experience-card p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .achievements h4 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .achievements ul {
+            list-style: none;
+        }
+
+        .achievements li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .achievements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold-accent);
+            font-weight: bold;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .education-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.95) 0%, rgba(17, 24, 39, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 
+                0 4px 20px rgba(0,0,0,0.3),
+                0 1px 3px rgba(0,0,0,0.2);
+            border-left: 4px solid var(--gold-accent);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 8px 30px rgba(0,0,0,0.4),
+                0 2px 8px rgba(245, 158, 11, 0.3);
+        }
+
+        .education-card:hover::before {
+            left: 100%;
+        }
+
+        .education-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .degree {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .institution {
+            color: var(--gold-accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .date-range {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Education Section Background */
+        #education {
+            background: 
+                linear-gradient(135deg, rgba(248, 250, 252, 0.98) 0%, rgba(241, 245, 249, 0.98) 100%),
+                url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        #education::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, transparent 0%, rgba(30, 64, 175, 0.01) 50%, transparent 100%),
+                url("data:image/svg+xml,%3Csvg width='90' height='90' viewBox='0 0 90 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f59e0b' fill-opacity='0.02'%3E%3Cpath d='M45 45m-12 0a12 12 0 1 1 24 0a12 12 0 1 1 -24 0M15 15m-6 0a6 6 0 1 1 12 0a6 6 0 1 1 -12 0M75 75m-6 0a6 6 0 1 1 12 0a6 6 0 1 1 -12 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 45s infinite linear reverse;
+            z-index: 1;
+        }
+
+        #education .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer h3 {
+            margin-bottom: 1rem;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-contact a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+            }
+
+            .header-text h1 {
+                font-size: 2.5rem;
+            }
+
+            /* Mobile Background Optimizations */
+            #summary, #experience, #education {
+                background-attachment: scroll !important;
+            }
+
+            /* Simplified backgrounds for better mobile performance */
+            #summary {
+                background: linear-gradient(135deg, rgba(248, 250, 252, 0.98) 0%, rgba(241, 245, 249, 0.98) 100%) !important;
+            }
+            
+            #experience {
+                background: linear-gradient(135deg, rgba(30, 64, 175, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%) !important;
+            }
+            
+            #education {
+                background: linear-gradient(135deg, rgba(248, 250, 252, 0.98) 0%, rgba(241, 245, 249, 0.98) 100%) !important;
+            }
+
+            /* Disable complex animations on mobile for better performance */
+            #summary::before, #experience::before, #education::before {
+                display: none;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 3rem);
+                left: 3rem !important;
+            }
+
+            .timeline-item::before {
+                left: -2.5rem !important;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section > .container > * {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <img src="https://raw.githubusercontent.com/TParish79/STP-portfolio/main/STP%20HS%20SQ.jpg" alt="Scott Parish" class="profile-image">
+                <div class="header-text">
+                    <h1>Scott Parish</h1>
+                    <p class="subtitle">Supply Chain Executive & Operations Leader</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>◦</span>
+                            <span>Caulfield, MO 65626</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>◦</span>
+                            <span><a href="mailto:Scottparish179@gmail.com" style="color: inherit; text-decoration: none;">Scottparish179@gmail.com</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <span>◦</span>
+                            <span>419-357-4608</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>◦</span>
+                            <a href="https://www.linkedin.com/in/scott-parish-9b26a4318" style="color: inherit; text-decoration: none;">LinkedIn Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#summary" class="nav-link">Summary</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <section id="summary" class="section">
+        <div class="container">
+            <h2>Professional Summary</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Supply Chain Leadership</h3>
+                    <ul>
+                        <li>25+ years of progressive supply chain and operations management</li>
+                        <li>Expert in production scheduling, material management, and logistics</li>
+                        <li>Proven track record of cost reduction and process optimization</li>
+                        <li>Experience managing cross-functional teams and multiple facilities</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <h3>Strategic Sourcing & Procurement</h3>
+                    <ul>
+                        <li>Advanced sourcing of engineered components and commodity products</li>
+                        <li>Expertise in global sourcing across Taiwan, China, Korea, and Italy</li>
+                        <li>Skilled in contract negotiation and supplier relationship management</li>
+                        <li>Proficient in interpreting design drawings and GD&T principles</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <h3>Manufacturing Expertise</h3>
+                    <ul>
+                        <li>Deep knowledge of plastic injection molding, stamping, and extrusions</li>
+                        <li>Experience with APQP, PFMEA, PPAP, and SPC process control</li>
+                        <li>Expertise in tooling development and alternative manufacturing processes</li>
+                        <li>Quality systems knowledge: ISO 9001:2015, IATF 16949, ISO 14001</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <h3>Business Operations</h3>
+                    <ul>
+                        <li>Sales & Operations Planning (S&OP) development and implementation</li>
+                        <li>Budgeting, P&L management, and inventory optimization</li>
+                        <li>ERP/MRP systems expertise (Oracle, TMM, MFG Pro, IQMS)</li>
+                        <li>International trade compliance and logistics coordination</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>Core Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Supply Chain Management</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Strategic Sourcing</span>
+                        <span class="skill-tag">Supplier Development</span>
+                        <span class="skill-tag">Global Procurement</span>
+                        <span class="skill-tag">Contract Negotiation</span>
+                        <span class="skill-tag">S&OP Planning</span>
+                        <span class="skill-tag">Inventory Optimization</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Operations Leadership</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Production Scheduling</span>
+                        <span class="skill-tag">Material Management</span>
+                        <span class="skill-tag">Quality Systems</span>
+                        <span class="skill-tag">Process Improvement</span>
+                        <span class="skill-tag">Team Development</span>
+                        <span class="skill-tag">Cross-functional Leadership</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Manufacturing & Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Injection Molding</span>
+                        <span class="skill-tag">Stamping & Extrusions</span>
+                        <span class="skill-tag">Machined Components</span>
+                        <span class="skill-tag">APQP/PPAP</span>
+                        <span class="skill-tag">GD&T</span>
+                        <span class="skill-tag">New Product Development</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Business Systems</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ERP/MRP Systems</span>
+                        <span class="skill-tag">Oracle</span>
+                        <span class="skill-tag">Microsoft Office Suite</span>
+                        <span class="skill-tag">PowerBI</span>
+                        <span class="skill-tag">Budget Management</span>
+                        <span class="skill-tag">KPI Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="experience-card">
+                        <h3>Director Supply Chain</h3>
+                        <div class="company-name">Innerspace Healthcare - Marne, MI</div>
+                        <div class="date-range">08/2021 - 06/2024</div>
+                        <div class="company-description">Specialty medical storage cabinets serving patient care, operating room, and endoscopy</div>
+                        <p>Managed cross-functional teams in purchasing, production scheduling, material management, and shipping operations. Led supplier development initiatives and strategic purchasing plans to support S&OP processes.</p>
+                        <div class="achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>Achieved 96% on-time delivery rate from suppliers</li>
+                                <li>Reduced inventory value from $3.8M to $2.66M</li>
+                                <li>Lowered direct material content to 23% (vs 26% budget)</li>
+                                <li>Increased inventory turnover rate from 4.5 to 6.3</li>
+                                <li>Implemented cycle-time-based production scheduling</li>
+                                <li>Established comprehensive KPI monitoring system</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="experience-card">
+                        <h3>Director of Supply Chain</h3>
+                        <div class="company-name">Grand Rapids Foam Technologies - Grand Rapids, MI</div>
+                        <div class="date-range">10/2018 - 08/2021</div>
+                        <div class="company-description">Polyurethane foam products for office furniture, medical, automotive, and mass transit industries</div>
+                        <p>Led supply chain strategies across two plants (MI and TX) with 9 direct reports. Collaborated with regional managers on continuous improvement initiatives and cost reduction strategies.</p>
+                        <div class="achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>Implemented comprehensive KPIs (PPM, On-Time Delivery, PPV)</li>
+                                <li>Reduced fuel costs by 15% through fleet optimization</li>
+                                <li>Achieved $136,000 reduction in inbound freight costs</li>
+                                <li>Increased inventory turnover from 12.5 to 25.8 monthly average</li>
+                                <li>Developed 2020 S&OP strategy for business portfolio</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="experience-card">
+                        <h3>Director Corporate Purchasing</h3>
+                        <div class="company-name">ODL, Inc. - Zeeland, MI</div>
+                        <div class="date-range">01/2014 - 03/2018</div>
+                        <div class="company-description">Building products - decorative door glass, retractable screens, blinds between glass, specialty door frames & glass systems</div>
+                        <p>Oversaw global supply chain strategy development and procurement policies. Led corporate purchasing team and managed facilities in both Michigan and Mexico.</p>
+                        <div class="achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>Achieved cost savings exceeding $700,000 annually</li>
+                                <li>Negotiated multi-year agreements for 35M+ sq ft glass procurement</li>
+                                <li>Reduced customer warranty claims by $300,000 through packaging improvements</li>
+                                <li>Maintained material content budgets of 47%-49% year over year</li>
+                                <li>Co-authored ODL CAPEX policy and Supplier Quality Manual</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="experience-card">
+                        <h3>Earlier Career Positions</h3>
+                        <div class="company-name">Multiple Organizations</div>
+                        <div class="date-range">1996 - 2013</div>
+                        <p>Progressive roles including Purchasing Manager at Lewco Inc., Senior Corporate Buyer at Revere Plastics Systems, Supply Chain Manager at Turtle & Hughes, and Commodity Manager at Ingersoll-Rand Company.</p>
+                        <div class="achievements">
+                            <h4>Key Experience Areas</h4>
+                            <ul>
+                                <li>Material handling conveyor systems & industrial ovens</li>
+                                <li>Plastic injection molding for automotive and appliance industries</li>
+                                <li>MROP integration for major manufacturing corporations</li>
+                                <li>Custom plastics manufacturing for industrial applications</li>
+                                <li>Air-operated diaphragm & piston pump manufacturing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <h2>Education & Training</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>Bachelor of Science</h3>
+                    <div class="degree">Business Administration - Focus: Accounting & Finance</div>
+                    <div class="institution">University of Phoenix</div>
+                    <div class="date-range">Graduated: 02/2007</div>
+                </div>
+                <div class="education-card">
+                    <h3>General Course Study</h3>
+                    <div class="degree">Business Administration</div>
+                    <div class="institution">Ohio State University - Lima Campus</div>
+                    <div class="date-range">1987</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <h3 style="color: var(--primary-blue); text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">Continuing Education & Certifications</h3>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h3>Leadership Development</h3>
+                        <ul>
+                            <li>Entrepreneurial Operating System (EOS)</li>
+                            <li>Lead365 Leadership Program</li>
+                            <li>Ingersoll-Rand Quality of Leadership I & II</li>
+                            <li>Toyota Way Problem Solving Training</li>
+                        </ul>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Quality & Process</h3>
+                        <ul>
+                            <li>ISO/QS 9000 Certified Internal Auditor</li>
+                            <li>Statistical Process Control Training</li>
+                            <li>Ingersoll-Rand Quality Advantage Training</li>
+                            <li>Advanced Polaris Training</li>
+                        </ul>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Professional Memberships</h3>
+                        <ul>
+                            <li>Institute for Supply Management (ISM)</li>
+                        </ul>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Technical Applications</h3>
+                        <ul>
+                            <li>Microsoft Office Suite (PowerPoint, Word, Excel, Project)</li>
+                            <li>PowerBI Data Analytics</li>
+                            <li>ERP/MRP Systems (Oracle, TMM, MFG Pro, IQMS, Macola)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <h3>Let's Connect</h3>
+            <div class="footer-contact">
+                <a href="mailto:Scottparish179@gmail.com">Scottparish179@gmail.com</a>
+                <a href="tel:+14193574608">419-357-4608</a>
+                <a href="https://www.linkedin.com/in/scott-parish-9b26a4318">LinkedIn</a>
+            </div>
+            <p>&copy; 2024 Scott Parish - Supply Chain Executive</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.background = 'var(--white)';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+         
