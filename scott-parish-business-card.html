@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scott Parish - Digital Business Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-blue: #60a5fa;
+            --dark-gray: #1f2937;
+            --medium-gray: #4b5563;
+            --light-gray: #f8fafc;
+            --white: #ffffff;
+            --gold-accent: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--light-gray) 0%, #e2e8f0 50%, var(--light-gray) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232563eb' fill-opacity='0.02'%3E%3Cpath d='M30 30m-2 0a2 2 0 1 1 4 0a2 2 0 1 1 -4 0M15 15m-1 0a1 1 0 1 1 2 0a1 1 0 1 1 -2 0M45 45m-1 0a1 1 0 1 1 2 0a1 1 0 1 1 -2 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 25s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0px) translateY(0px); }
+            100% { transform: translateX(-60px) translateY(-60px); }
+        }
+
+        .business-card {
+            width: min(350px, 90vw);
+            height: auto;
+            min-height: 500px;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 
+                0 25px 50px rgba(30, 64, 175, 0.15),
+                0 10px 30px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            position: relative;
+            overflow: hidden;
+            animation: cardReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .business-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 
+                0 35px 70px rgba(30, 64, 175, 0.25),
+                0 15px 40px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        @keyframes cardReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0px);
+            }
+        }
+
+        .card-header {
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 30m-2 0a2 2 0 1 1 4 0a2 2 0 1 1 -4 0M15 15m-1 0a1 1 0 1 1 2 0a1 1 0 1 1 -2 0M45 45m-1 0a1 1 0 1 1 2 0a1 1 0 1 1 -2 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s infinite linear reverse;
+        }
+
+        .name-section {
+            position: relative;
+            z-index: 2;
+            animation: nameReveal 1s ease-out 0.3s both;
+        }
+
+        @keyframes nameReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem 1.5rem;
+        }
+
+        .name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            animation: nameSlideIn 1s ease-out 0.5s both;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+            animation: titleSlideIn 1s ease-out 0.7s both;
+        }
+
+        .company {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            animation: companySlideIn 1s ease-out 0.9s both;
+        }
+
+        @keyframes nameSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes titleSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes companySlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-section {
+            margin-bottom: 2rem;
+            animation: contactSlideUp 1s ease-out 1.1s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.08) 0%, rgba(96, 165, 250, 0.05) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(30, 64, 175, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.15);
+            border-color: var(--accent-blue);
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.12) 0%, rgba(96, 165, 250, 0.08) 100%);
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+            font-family: 'Crimson Text', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--white);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-item:hover .contact-icon {
+            background: linear-gradient(135deg, var(--gold-accent) 0%, #fbbf24 100%);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .contact-content {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            color: var(--medium-gray);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover .contact-value {
+            color: var(--primary-blue);
+        }
+
+        @keyframes contactSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .qr-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.05) 0%, rgba(96, 165, 250, 0.05) 100%);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            animation: qrSlideIn 1s ease-out 1.3s both;
+        }
+
+        .qr-code {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .qr-code:hover {
+            transform: scale(1.05);
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .qr-info {
+            flex: 1;
+            margin-left: 1rem;
+        }
+
+        .qr-title {
+            font-weight: 600;
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .qr-subtitle {
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+            font-weight: 400;
+        }
+
+        @keyframes qrSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-footer {
+            position: relative;
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            overflow: hidden;
+        }
+
+        .card-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M30 30m-2 0a2 2 0 1 1 4 0a2 2 0 1 1 -4 0M15 15m-1 0a1 1 0 1 1 2 0a1 1 0 1 1 -2 0M45 45m-1 0a1 1 0 1 1 2 0a1 1 0 1 1 -2 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 30s infinite linear;
+        }
+
+        .specialization {
+            position: relative;
+            z-index: 2;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            animation: footerFadeIn 1s ease-out 1.5s both;
+        }
+
+        @keyframes footerFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .accent-line {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-accent), #fbbf24, var(--gold-accent));
+            border-radius: 3px 3px 0 0;
+            animation: lineExpand 1.5s ease-out 1.7s forwards;
+        }
+
+        @keyframes lineExpand {
+            to {
+                width: 80px;
+            }
+        }
+
+        .corner-decoration {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 8px;
+            height: 8px;
+            background: var(--gold-accent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: cornerPop 0.5s ease-out 1.9s forwards;
+        }
+
+        @keyframes cornerPop {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Interactive effects */
+        .business-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(96, 165, 250, 0.03) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 24px;
+        }
+
+        .business-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .contact-item:active {
+                background: rgba(30, 64, 175, 0.1);
+                transform: scale(0.98);
+            }
+            
+            .qr-code:active {
+                transform: scale(1.02);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+            .business-card {
+                width: 95vw;
+                margin: 0.5rem;
+            }
+            
+            .card-header {
+                padding: 2rem 1rem;
+            }
+            
+            .name {
+                font-size: 1.8rem;
+            }
+            
+            .card-content {
+                padding: 1.5rem 1rem;
+            }
+            
+            .contact-item {
+                padding: 0.85rem 1rem;
+            }
+            
+            .contact-icon {
+                width: 36px;
+                height: 36px;
+                margin-right: 0.75rem;
+                font-size: 1rem;
+            }
+            
+            .contact-value {
+                font-size: 0.85rem;
+            }
+            
+            .qr-code {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .card-footer {
+                padding: 1.25rem 1rem;
+            }
+            
+            .specialization {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                min-height: auto;
+                padding: 0.5rem;
+            }
+            
+            body::before {
+                display: none;
+            }
+            
+            .business-card {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                page-break-inside: avoid;
+            }
+            
+            .card-header::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="business-card">
+        <div class="corner-decoration"></div>
+        
+        <!-- Header Section with Gradient Background -->
+        <div class="card-header">
+            <div class="name-section">
+                <div class="name">Scott Parish</div>
+                <div class="title">Supply Chain Executive</div>
+                <div class="company">Strategic Operations Leadership</div>
+            </div>
+        </div>
+        
+        <!-- Main Content Section -->
+        <div class="card-content">
+            <div class="contact-section">
+                <div class="contact-item">
+                    <div class="contact-icon">E</div>
+                    <div class="contact-content">
+                        <div class="contact-label">Email</div>
+                        <a href="mailto:scottparish179@gmail.com" class="contact-value">scottparish179@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">P</div>
+                    <div class="contact-content">
+                        <div class="contact-label">Phone</div>
+                        <a href="tel:+14193574608" class="contact-value">419-357-4608</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">L</div>
+                    <div class="contact-content">
+                        <div class="contact-label">LinkedIn</div>
+                        <a href="https://www.linkedin.com/in/scott-parish-9b26a4318" target="_blank" class="contact-value">scott-parish-9b26a4318</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QR Code Section -->
+            <div class="qr-section">
+                <div class="qr-code">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://scottparish.example.com&bgcolor=FFFFFF&color=1e40af&qzone=2&format=png" alt="QR Code to Scott's Website">
+                </div>
+                <div class="qr-info">
+                    <div class="qr-title">Visit My Website</div>
+                    <div class="qr-subtitle">Scan for full portfolio & experience</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="card-footer">
+            <div class="specialization">Supply Chain Optimization • Cost Reduction • Team Leadership</div>
+        </div>
+        
+        <div class="accent-line"></div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Add touch feedback for mobile devices
+        document.querySelectorAll('.contact-item, .qr-code').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            element.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+            });
+        });
+
+        // Enhanced mobile interactions for contact items
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Add visual feedback on click
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 12px 30px rgba(30, 64, 175, 0.2)';
+                
+                setTimeout(() => {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                }, 200);
+            });
+        });
+
+        // QR Code tap to copy website URL
+        document.querySelector('.qr-section').addEventListener('click', function() {
+            const url = 'https://scottparish.example.com';
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Scott Parish - Supply Chain Executive',
+                    text: 'Check out Scott Parish\'s professional portfolio',
+                    url: url
+                });
+            } else if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => {
+                    // Show brief feedback
+                    const feedback = document.createElement('div');
+                    feedback.textContent = 'Website URL copied!';
+                    feedback.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; z-index: 1000; animation: fadeInOut 2s ease-in-out;';
+                    document.body.appendChild(feedback);
+                    setTimeout(() => feedback.remove(), 2000);
+                });
+            }
+        });
+    </script>
+
+    <style>
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+            20%
