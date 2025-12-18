@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scott Parish - Career Achievements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-blue: #60a5fa;
+            --dark-gray: #1f2937;
+            --medium-gray: #4b5563;
+            --light-gray: #f8fafc;
+            --white: #ffffff;
+            --gold-accent: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(59, 130, 246, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            animation: none;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 30m-2 0a2 2 0 1 1 4 0a2 2 0 1 1 -4 0M15 15m-1 0a1 1 0 1 1 2 0a1 1 0 1 1 -2 0M45 45m-1 0a1 1 0 1 1 2 0a1 1 0 1 1 -2 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0px) translateY(0px); }
+            100% { transform: translateX(-60px) translateY(-60px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.2);
+            object-fit: cover;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .header-text h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #ffffff 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite, fadeInScale 1s ease-out;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .header-text h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-accent), #fbbf24, var(--gold-accent));
+            animation: expandLine 1.5s ease-out 0.5s forwards;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes expandLine {
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .header-text .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+            animation: slideInLeft 1s ease-out 0.3s both;
+            position: relative;
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            100% {
+                opacity: 0.9;
+                transform: translateX(0);
+            }
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.9);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInContact 0.5s ease-out forwards;
+        }
+
+        .contact-item:nth-child(1) { animation-delay: 0.8s; }
+        .contact-item:nth-child(2) { animation-delay: 1.0s; }
+        .contact-item:nth-child(3) { animation-delay: 1.2s; }
+        .contact-item:nth-child(4) { animation-delay: 1.4s; }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            color: var(--white);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .contact-item span:first-child {
+            transition: transform 0.3s ease;
+            font-weight: bold;
+            color: var(--gold-accent);
+            text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+        }
+
+        .contact-item:hover span:first-child {
+            transform: scale(1.3);
+            color: #fbbf24;
+        }
+
+        @keyframes fadeInContact {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--medium-gray);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+            background: rgba(30, 64, 175, 0.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1e40af 0%, #1f2937 100%);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer h3 {
+            margin-bottom: 1rem;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-contact a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--white);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #achievements {
+            padding-top: 3.5rem;
+            padding-bottom: 2rem;
+        }
+
+        #innerspace {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        #grft, #odl {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .section:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .section h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-accent), #fbbf24, var(--gold-accent));
+        }
+
+        /* Achievement Cards */
+        .achievements-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .company-achievement-card {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.98) 0%, rgba(17, 24, 39, 0.98) 100%);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.3),
+                0 4px 20px rgba(0, 0, 0, 0.2);
+            border-top: 4px solid var(--primary-blue);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        .company-achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.08), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .company-achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 8px 30px rgba(30, 64, 175, 0.3);
+            border-top-color: var(--gold-accent);
+        }
+
+        .company-achievement-card:hover::before {
+            left: 100%;
+        }
+
+        .company-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .company-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-position {
+            font-size: 1.3rem;
+            color: var(--gold-accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-dates {
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .company-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            line-height: 1.5;
+            border-left: 3px solid var(--accent-blue);
+            padding-left: 1rem;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-item {
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 5px solid var(--gold-accent);
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: var(--dark-gray);
+        }
+
+        .achievement-item:hover {
+            transform: translateX(10px);
+            background: linear-gradient(135deg, #ffffff 0%, var(--light-gray) 100%);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .achievement-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .achievement-text {
+            color: var(--dark-gray);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .achievement-text strong {
+            color: var(--primary-blue);
+        }
+
+        /* Stats Highlight */
+        .stats-highlight {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .stats-highlight h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+            }
+
+            .header-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .company-achievement-card {
+                padding: 2rem;
+            }
+
+            .company-name {
+                font-size: 1.6rem;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section > .container > * {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <img src="https://raw.githubusercontent.com/TParish79/STP-portfolio/main/STP%20HS%20SQ.jpg" alt="Scott Parish" class="profile-image">
+                <div class="header-text">
+                    <h1>Scott Parish</h1>
+                    <p class="subtitle">Supply Chain Executive & Operations Leader</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>◦</span>
+                            <span><a href="mailto:Scottparish179@gmail.com" style="color: inherit; text-decoration: none;">Scottparish179@gmail.com</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <span>◦</span>
+                            <span>419-357-4608</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>◦</span>
+                            <a href="https://www.linkedin.com/in/scott-parish-9b26a4318" style="color: inherit; text-decoration: none;">LinkedIn Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#achievements" class="nav-link">Achievements Overview</a>
+            <a href="#innerspace" class="nav-link">Innerspace Healthcare</a>
+            <a href="#grft" class="nav-link">Grand Rapids Foam</a>
+            <a href="#odl" class="nav-link">ODL Inc.</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Overview Section -->
+    <section id="achievements" class="section">
+        <div class="container">
+            <h2>Achievement Highlights</h2>
+            
+            <div class="stats-highlight">
+                <h3>Career Impact Summary</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">$1M+</span>
+                        <span class="stat-label">Annual Cost Savings</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">96%</span>
+                        <span class="stat-label">On-Time Delivery Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">25.8</span>
+                        <span class="stat-label">Inventory Turnover Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">35M+</span>
+                        <span class="stat-label">Sq Ft Glass Procurement</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innerspace Healthcare -->
+    <section id="innerspace" class="section">
+        <div class="container">
+            <div class="company-achievement-card">
+                <div class="company-header">
+                    <h3 class="company-name">Innerspace Healthcare</h3>
+                    <p class="company-position">Director Supply Chain</p>
+                    <p class="company-dates">August 2021 - June 2024</p>
+                    <p class="company-description">Specialty medical storage cabinets serving patient care, operating room, and endoscopy</p>
+                </div>
+
+                <div class="achievements-grid">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Achieved <strong>96% on-time delivery rate</strong> from suppliers through strategic supplier development and management initiatives</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Introduced and implemented an <strong>"Available to Ship" (ATS) Key Performance Indicator</strong> to enhance operational visibility</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Reduced inventory value from <strong>$3.8 million to $2.66 million</strong>, optimizing working capital management</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Lowered direct material content to <strong>23% (vs 26% budget)</strong> through strategic cost optimization</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Increased inventory turnover rate from <strong>4.5 to 6.3</strong>, improving cash flow and efficiency</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Transitioned production scheduling from <strong>unit-based system to cycle-time-based system</strong> for enhanced accuracy</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Implemented <strong>Sales and Operations Planning (S&OP)</strong> to align production line capacity with sales forecasts</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Established and monitored departmental KPIs including <strong>inventory levels, accuracy, warehouse utilization</strong>, and custom quote-to-sale conversion ratios</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Cascaded <strong>Entrepreneurial Operating System (EOS) principles</strong> to mid-level managers, improving organizational alignment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grand Rapids Foam Technologies -->
+    <section id="grft" class="section">
+        <div class="container">
+            <div class="company-achievement-card">
+                <div class="company-header">
+                    <h3 class="company-name">Grand Rapids Foam Technologies</h3>
+                    <p class="company-position">Director of Supply Chain</p>
+                    <p class="company-dates">October 2018 - August 2021</p>
+                    <p class="company-description">Poured and fabricated polyurethane foam products serving office furniture, medical, automotive, and mass transit industries</p>
+                </div>
+
+                <div class="achievements-grid">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Implemented key performance indicators <strong>(KPIs) including PPM, Supplier On-Time Delivery, PPV</strong>, and Supplier Scorecards</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Designed and optimized shipping network resulting in <strong>15% reduction in fuel costs</strong> and 12% decrease in overtime labor</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Achieved <strong>$136,000 reduction in inbound freight costs</strong> by optimizing shipping lane sourcing</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Redirected <strong>ocean freight carrier strategies</strong> to improve cost efficiency and on-time delivery from Dominican Republic suppliers</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Increased corporate inventory turnover rate from <strong>12.5 to monthly average of 25.8</strong> in 2020</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Developed and executed the <strong>Sales and Operations Planning (S&OP) strategy</strong> for the 2020 business portfolio</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Utilized <strong>A3 problem-solving methods and LEAN practices</strong> to minimize waste and optimize operational efficiency</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Managed logistics, production scheduling, and purchasing across <strong>two plants with oversight of 9 direct reports</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ODL Inc. -->
+    <section id="odl" class="section">
+        <div class="container">
+            <div class="company-achievement-card">
+                <div class="company-header">
+                    <h3 class="company-name">ODL, Inc.</h3>
+                    <p class="company-position">Director Corporate Purchasing</p>
+                    <p class="company-dates">January 2014 - March 2018</p>
+                    <p class="company-description">Building products - decorative door glass, retractable screens, blinds between glass, specialty door frames & glass systems</p>
+                </div>
+
+                <div class="achievements-grid">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Achieved cost savings <strong>exceeding $700,000 annually</strong> through strategic initiatives by the Corporate Purchasing Team</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Negotiated multi-year supply agreements for clear tempered glass, managing <strong>annual procurement volume exceeding 35 million square feet</strong></p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Coordinated replacement of EPS foam packaging with Arcel material, resulting in <strong>$300,000 reduction in annual customer warranty claims</strong></p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Ensured adherence to purchasing strategies, consistently achieving <strong>material content budgets of 47%-49%</strong> year over year</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Directed development of TPO extrusion compounds to replace aluminum extrusions, leading to <strong>cost avoidance of over $110,000</strong></p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Transitioned aluminum extrusion finishing from wet coat to powder coat, achieving <strong>5% reduction in finished product cost</strong></p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Developed dashboards for plastic resin and aluminum utilizing <strong>commodity material price indices</strong> (CDI, IHS, LME, Platts)</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text"><strong>Co-authored ODL CAPEX policy and Supplier Quality Manual</strong>, establishing standardized procurement procedures</p>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">✓</div>
+                        <p class="achievement-text">Led 2017 initiative to replace <strong>two underperforming KANBAN systems</strong> with efficient supplier replenishment programs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <h3>Let's Connect</h3>
+            <div class="footer-contact">
+                <a href="mailto:Scottparish179@gmail.com">Scottparish179@gmail.com</a>
+                <a href="tel:+14193574608">419-357-4608</a>
+                <a href="https://www.linkedin.com/in/scott-parish-9b26a4318">LinkedIn</a>
+            </div>
+            <p>&copy; 2025-2026 Scott Parish - Supply Chain Executive</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Add animation on scroll for achievement cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all achievement cards
+        document.querySelectorAll('.company-achievement-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
